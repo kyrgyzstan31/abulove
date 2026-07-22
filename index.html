@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Любишь Абу?</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: #ffd6e7;
+      font-family: Arial, sans-serif;
+      position: relative;
+    }
+
+    .container {
+      text-align: center;
+      padding-top: 120px;
+    }
+
+    h1 {
+      font-size: 38px;
+      color: #ff1493;
+      margin-bottom: 60px;
+    }
+
+    button {
+      border: none;
+      padding: 15px 35px;
+      font-size: 22px;
+      border-radius: 15px;
+      cursor: pointer;
+      color: white;
+      position: fixed;
+      transition: 0.15s;
+    }
+
+    #yesBtn {
+      background: green;
+      left: 10%;
+      top: 55%;
+    }
+
+    #noBtn {
+      background: red;
+      left: 55%;
+      top: 55%;
+    }
+
+    #message {
+      margin-top: 140px;
+      font-size: 28px;
+      color: #c2185b;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Ты любишь Абу? 💖</h1>
+    <div id="message"></div>
+  </div>
+
+  <button id="yesBtn">Да</button>
+  <button id="noBtn">Нет</button>
+
+  <script>
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const message = document.getElementById("message");
+
+function moveButton(btn) {
+  const maxX = window.innerWidth - btn.offsetWidth;
+  const maxY = window.innerHeight - btn.offsetHeight;
+
+  btn.style.left = Math.random() * maxX + "px";
+  btn.style.top = Math.random() * maxY + "px";
+}
+
+yesBtn.addEventListener("mouseover", () => moveButton(yesBtn));
+yesBtn.addEventListener("touchstart", () => moveButton(yesBtn));
+
+noBtn.addEventListener("mouseover", () => moveButton(noBtn));
+noBtn.addEventListener("touchstart", () => moveButton(noBtn));
+
+yesBtn.addEventListener("click", () => {
+  message.innerHTML = `
+    <h2>🎉 КРАСАВА! 🎉</h2>
+    <p>
+      как ты в этом мире много <b>"Да"</b>! 😄<br><br>
+     
+    </p>
+  `;
+});
+
+noBtn.addEventListener("click", () => {
+  message.innerHTML = `
+    <h2>😂 Попался!</h2>
+    <p>Ты нажал "Нет", но спасибо, что посетил сайт ❤️</p>
+  `;
+});
+</script>
+
+</body>
+</html>
+
