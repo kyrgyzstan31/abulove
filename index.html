@@ -69,34 +69,41 @@
   <button id="noBtn">Нет</button>
 
   <script>
-    const yesBtn = document.getElementById("yesBtn");
-    const noBtn = document.getElementById("noBtn");
-    const message = document.getElementById("message");
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const message = document.getElementById("message");
 
-    function moveButton() {
-      const buttonWidth = yesBtn.offsetWidth;
-      const buttonHeight = yesBtn.offsetHeight;
+function moveButton(btn) {
+  const maxX = window.innerWidth - btn.offsetWidth;
+  const maxY = window.innerHeight - btn.offsetHeight;
 
-      const maxX = window.innerWidth - buttonWidth - 10;
-      const maxY = window.innerHeight - buttonHeight - 10;
+  btn.style.left = Math.random() * maxX + "px";
+  btn.style.top = Math.random() * maxY + "px";
+}
 
-      const randomX = Math.random() * maxX;
-      const randomY = Math.random() * maxY;
+yesBtn.addEventListener("mouseover", () => moveButton(yesBtn));
+yesBtn.addEventListener("touchstart", () => moveButton(yesBtn));
 
-      yesBtn.style.left = randomX + "px";
-      yesBtn.style.top = randomY + "px";
-    }
+noBtn.addEventListener("mouseover", () => moveButton(noBtn));
+noBtn.addEventListener("touchstart", () => moveButton(noBtn));
 
-    // Для телефона
-    yesBtn.addEventListener("touchstart", moveButton);
+yesBtn.addEventListener("click", () => {
+  message.innerHTML = `
+    <h2>🎉 КРАСАВА! 🎉</h2>
+    <p>
+      как ты в этом мире много <b>"Да"</b>! 😄<br><br>
+     
+    </p>
+  `;
+});
 
-    // Для ПК
-    yesBtn.addEventListener("mouseover", moveButton);
-
-    noBtn.addEventListener("click", () => {
-      message.innerText = "я так и знал 😎";
-    });
-  </script>
+noBtn.addEventListener("click", () => {
+  message.innerHTML = `
+    <h2>😂 Попался!</h2>
+    <p>Ты нажал "Нет", но спасибо, что посетил сайт ❤️</p>
+  `;
+});
+</script>
 
 </body>
 </html>
